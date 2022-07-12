@@ -18,13 +18,15 @@ class ShoppingController extends Controller
             "createddate" => $request->shopping['createddate'],
             "name" => $request->shopping['name'],
         ]);
+
+        $data = [
+            "createddate" => $shopping->createddate,
+            "id" => $shopping->id,
+            "name" => $shopping->name,
+        ];
         
         return response([
-            "data" => [
-                "createddate" => $shopping->createddate,
-                "id" => $shopping->id,
-                "name" => $shopping->name,
-            ]
+            "data" => $data
         ], Response::HTTP_CREATED);
     }
 
@@ -58,12 +60,14 @@ class ShoppingController extends Controller
             ], Response::HTTP_NOT_FOUND);
         }
 
+        $data = [
+            "createddate" => $shopping->createddate,
+            "id" => $shopping->id,
+            "name" => $shopping->name,
+        ];
+
         return response([
-            "data" => [
-                "createddate" => $shopping->createddate,
-                "id" => $shopping->id,
-                "name" => $shopping->name,
-            ]
+            "data" => $data
         ], Response::HTTP_OK);
     }
 
@@ -82,12 +86,14 @@ class ShoppingController extends Controller
         $shopping->createddate = $request->shopping['createddate'] == null ? $shopping->createddate : $request->shopping['createddate'];
         $shopping->save();
 
+        $data = [
+            "createddate" => $shopping->createddate,
+            "id" => $shopping->id,
+            "name" => $shopping->name,
+        ];
+
         return response([
-            "data" => [
-                "createddate" => $shopping->createddate,
-                "id" => $shopping->id,
-                "name" => $shopping->name,
-            ]
+            "data" => $data
         ], Response::HTTP_OK);
     }
 

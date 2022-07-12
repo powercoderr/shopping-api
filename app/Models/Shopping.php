@@ -20,6 +20,7 @@ class Shopping extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
     public $timestamps = true;
 
 }
