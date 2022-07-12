@@ -14,6 +14,7 @@ class AuthController extends Controller
 
      /** Handle signup request */
      public function signup(Request $request){ 
+        
         //Check if user with the same username already exists
         if(User::where('username', $request->user['username'])->first()){
             $username = $request->user['username'];
@@ -53,6 +54,7 @@ class AuthController extends Controller
             return $this->failure("Login gagal", "Username atau password salah", Response::HTTP_UNAUTHORIZED);
         }
         
+        //Login success (attempt is true)
         return response([
             "email" => auth()->user()->email,
             "token" => auth()->user()->createToken('MyApp')->accessToken,
